@@ -19,7 +19,6 @@ use Cake\Controller\ComponentRegistry;
 use Cake\Controller\Controller;
 use Cake\Core\App;
 use Cake\Core\Configure;
-use Cake\Utility\Hash;
 
 /**
  * Shell for ACL management. This console is known to have issues with zend.ze1_compatibility_mode
@@ -120,6 +119,16 @@ class AclShell extends Shell
     public function main()
     {
         $this->out($this->OptionParser->help());
+    }
+
+    /**
+     * Cleans ACL tables
+     *
+     * @return void
+     */
+    public function clean()
+    {
+
     }
 
     /**
@@ -509,6 +518,8 @@ class AclShell extends Shell
                     'node' => ['help' => __d('cake_acl', 'The optional node to view the subtree of.')]
                 ]
             ]
+        ])->addSubcommand('clean', [
+            'help' => __d('cake_acl', 'Clears all the ACL tables')
         ])->epilog(
             [
                 'Node and parent arguments can be in one of the following formats:',

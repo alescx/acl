@@ -46,9 +46,9 @@ class AclNodesTable extends Table
      */
     public function node($ref = null)
     {
-        $db = $this->connection();
-        $type = $this->alias();
-        $table = $this->table();
+        $db = $this->getConnection();
+        $type = $this->getAlias();
+        $table = $this->getTable();
         $result = null;
 
         if (empty($ref)) {

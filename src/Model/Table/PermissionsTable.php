@@ -34,8 +34,8 @@ class PermissionsTable extends AclNodesTable
      */
     public function initialize(array $config)
     {
-        $this->alias('Permissions');
-        $this->table('aros_acos');
+        $this->setAlias('Permissions');
+        $this->setTable('aros_acos');
         $this->belongsTo('Aros', [
             'className' => App::className('Acl.ArosTable', 'Model/Table'),
         ]);
@@ -103,15 +103,15 @@ class PermissionsTable extends AclNodesTable
         $count = $aroPath->count();
         $aroPaths = $aroPath->toArray();
         for ($i = 0; $i < $count; $i++) {
-            $permAlias = $this->alias();
+            $permAlias = $this->getAlias();
 
             $perms = $this->find('all', [
                 'conditions' => [
                     "{$permAlias}.aro_id" => $aroPaths[$i]->id,
                     "{$permAlias}.aco_id IN" => $acoIDs
                 ],
-                'order' => [$this->Aco->alias() . '.lft' => 'desc'],
-                'contain' => $this->Aco->alias(),
+                'order' => [$this->Aco->getAlias() . '.lft' => 'desc'],
+                'contain' => $this->Aco->getAlias(),
             ]);
 
             if ($perms->count() == 0) {

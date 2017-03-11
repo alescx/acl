@@ -93,14 +93,14 @@ class AclBehavior extends Behavior
      *
      * @param string|array|Model $ref Array with 'model' and 'foreign_key', model object, or string value
      * @param string $type Only needed when Acl is set up as 'both', specify 'Aro' or 'Aco' to get the correct node
-     * @return Cake\ORM\Query
+     * @return \Cake\ORM\Query
      * @link http://book.cakephp.org/2.0/en/core-libraries/behaviors/acl.html#node
      * @throws \Cake\Core\Exception\Exception
      */
     public function node($ref = null, $type = null)
     {
         if (empty($type)) {
-            $type = $this->_typeMaps[$this->config('type')];
+            $type = $this->_typeMaps[$this->getConfig('type')];
             if (is_array($type)) {
                 trigger_error(__d('cake_dev', 'AclBehavior is setup with more then one type, please specify type parameter for node()'), E_USER_WARNING);
                 return null;
@@ -122,7 +122,7 @@ class AclBehavior extends Behavior
     public function afterSave(Event $event, Entity $entity)
     {
         $model = $event->subject();
-        $types = $this->_typeMaps[$this->config('type')];
+        $types = $this->_typeMaps[$this->getConfig('type')];
         if (!is_array($types)) {
             $types = [$types];
         }
