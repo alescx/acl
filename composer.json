@@ -19,8 +19,7 @@
 	},
 	"minimum-stability": "dev",
 	"require": {
-		"cakephp/cakephp": "~3.0",
-		"cakephp/acl" : "dev-master"
+		"cakephp/cakephp": "~3.4.*"
 	},
 	"require-dev": {
 		"cakephp/cakephp-codesniffer": "master-dev",
