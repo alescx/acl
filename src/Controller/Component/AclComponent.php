@@ -88,6 +88,7 @@ class AclComponent extends Component
      * @return AclInterface|void either null, or the adapter implementation.
      * @throws \Cake\Core\Exception\Exception when the given class is not an instance of AclInterface
      */
+
     public function adapter($adapter = null)
     {
         if ($adapter) {

@@ -42,8 +42,8 @@ class PermissionsTable extends AclNodesTable
         $this->belongsTo('Acos', [
             'className' => App::className('Acl.AcosTable', 'Model/Table'),
         ]);
-        $this->Aro = $this->Aros->target();
-        $this->Aco = $this->Acos->target();
+        $this->Aro = $this->Aros->getTarget();
+        $this->Aco = $this->Acos->getTarget();
     }
 
     /**
